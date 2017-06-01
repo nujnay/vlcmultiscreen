@@ -72,10 +72,10 @@ public class ShineDemoActivity extends Activity {
 
 //        path1 = "rtsp://admin:ab123456@172.168.1.14/surfix";
 //        path1 = "rtsp://admin:ab123456@172.168.1.14/surfix";
-        path1 = "shine_net://tcp@10.0.1.11:5554";
+        path1 = "http://10.0.1.87:8080/111";
         path2 = "http://10.0.1.87:8080/111";
         path3 = "http://10.0.1.87:8080/111";
-        path4 = "shine_net://tcp@10.0.1.11:5554";
+        path4 = "http://10.0.1.87:8080/111";
         path5 = "http://10.0.1.153:5022";
         path6 = "http://10.0.1.153:5022";
         //rtsp://10.0.1.87:8554/111
@@ -87,7 +87,7 @@ public class ShineDemoActivity extends Activity {
 //		VideoView video5 = (VideoView) findViewById(R.id.video5);
 //		VideoView video6 = (VideoView) findViewById(R.id.video6);
 
-        showVideoHard(path1, video1);
+        showVideo(path1, video1);
 //        showVideoHard(path2, video2);
 //        showVideoSoft(path3, video3);
 //        showVideoSoft(path4, video4);
@@ -153,7 +153,7 @@ public class ShineDemoActivity extends Activity {
                             mMedia = new Media(libVLC, path);
                         }
 
-                         mMedia.setHWDecoderEnabled(true,true);
+                         mMedia.setHWDecoderEnabled(false,false);
                         // mMedia.setHttpoptimize();
 
                         mMediaPlayer.setMedia(mMedia);
@@ -218,7 +218,7 @@ public class ShineDemoActivity extends Activity {
                             mMedia = new Media(libVLC, path);
                         }
 
-                        mMedia.setHWDecoderEnabled(true,true);
+                        mMedia.setHWDecoderEnabled(false,false);
                         // mMedia.setHttpoptimize();
 
                         mMediaPlayer.setMedia(mMedia);
@@ -242,7 +242,7 @@ public class ShineDemoActivity extends Activity {
             Log.d("fileeeeee222", path);
 //            mMedia = new Media(libVLC, Uri.parse(path));
         }
-        mMedia.setHWDecoderEnabled(false, true);
+        mMedia.setHWDecoderEnabled(false, false);
 //		mMedia.setHttpoptimize();
         final MediaPlayer mMediaPlayer = new MediaPlayer(mMedia);
 
@@ -282,7 +282,7 @@ public class ShineDemoActivity extends Activity {
                             mMedia = new Media(libVLC, path);
                         }
 
-                        mMedia.setHWDecoderEnabled(true,true);
+                        mMedia.setHWDecoderEnabled(false,false);
                         // mMedia.setHttpoptimize();
 
                         mMediaPlayer.setMedia(mMedia);

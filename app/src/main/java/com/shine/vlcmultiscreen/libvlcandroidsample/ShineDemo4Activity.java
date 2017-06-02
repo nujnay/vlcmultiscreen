@@ -120,9 +120,9 @@ public class ShineDemo4Activity extends Activity {
                         mMediaPlayer.stop();
                         Media mMedia;
                         if (path.startsWith("http")) {
-                            mMedia = new Media(libVLC, Uri.parse(path));
-                        } else {
                             mMedia = new Media(libVLC, path);
+                        } else {
+                            mMedia = new Media(libVLC, Uri.parse(path));
                         }
                         mMedia.setHWDecoderEnabled(true, true);
                         mMediaPlayer.setMedia(mMedia);

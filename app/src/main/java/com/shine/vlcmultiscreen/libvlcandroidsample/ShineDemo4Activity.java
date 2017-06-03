@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.VideoView;
 
 import com.shine.vlcmultiscreen.R;
@@ -66,20 +67,20 @@ public class ShineDemo4Activity extends Activity {
         String path3 = "";
         String path4 = "";
 
-        path1 = "http://172.168.1.153:5010";
-        path2 = "http://172.168.1.153:5010";
-        path3 = "http://172.168.1.153:5008";
+        path1 = "http://172.168.1.153:5014";
+        path2 = "http://172.168.1.153:5012";
+        path3 = "rtsp://admin:ab123456@172.168.1.14/surfix";
         path4 = "file:///sdcard/123.mpg";
 
         VideoView video1 = (VideoView) findViewById(R.id.video1);
         VideoView video2 = (VideoView) findViewById(R.id.video2);
-//        VideoView video3 = (VideoView) findViewById(R.id.video3);
+        VideoView video3 = (VideoView) findViewById(R.id.video3);
         VideoView video4 = (VideoView) findViewById(R.id.video4);
 
-        showVideo(path1, video1);
-        showVideo(path2, video2);
-//        showVideo(path3, video3);
-        showVideo(path4, video4);
+//        showVideo(path1, video1);
+//        showVideo(path2, video2);
+        showVideo(path3, video3);
+//        showVideo(path4, video4);
     }
 
     private void showVideo(final String path, VideoView videoView) {
@@ -119,10 +120,13 @@ public class ShineDemo4Activity extends Activity {
                     case Event.EndReached:
                         mMediaPlayer.stop();
                         Media mMedia;
-                        if (path.startsWith("http")) {
-                            mMedia = new Media(libVLC, path);
-                        } else {
+                        if (path.contains("http")) {
+                            Log.d("pathpath", path + "");
                             mMedia = new Media(libVLC, Uri.parse(path));
+                        } else if (path.contains("rtsp")) {
+                            mMedia = new Media(libVLC, Uri.parse(path));
+                        } else {
+                            mMedia = new Media(libVLC, path);
                         }
                         mMedia.setHWDecoderEnabled(true, true);
                         mMediaPlayer.setMedia(mMedia);

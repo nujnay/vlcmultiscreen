@@ -787,6 +787,11 @@ public class Media extends VLCObject<Media.Event> {
         addOption(":file-caching=1500");
         addOption(":network-caching=1500");
 
+        addOption("--avcodec-skip-frame");
+        addOption("2");
+        addOption("--avcodec-skip-idct");
+        addOption("2");
+
         final StringBuilder sb = new StringBuilder(":codec=");
         if (decoder == HWDecoderUtil.Decoder.MEDIACODEC || decoder == HWDecoderUtil.Decoder.ALL)
             sb.append(getMediaCodecModule()).append(",");

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.widget.VideoView;
 
 import com.shine.vlcmultiscreen.R;
@@ -32,12 +31,12 @@ import io.reactivex.functions.Consumer;
  *
  * @version 1.0.0<br/>
  */
-public class ShineDemo9Activity extends Activity {
+public class ShineDemo6Activity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shine_demo9);
+        setContentView(R.layout.activity_shine_demo6);
         RxPermissions rxPermissions = new RxPermissions(this);
         rxPermissions
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -69,19 +68,13 @@ public class ShineDemo9Activity extends Activity {
         String path4 = "";
         String path5 = "";
         String path6 = "";
-        String path7 = "";
-        String path8 = "";
-        String path9 = "";
 
-        path1 = "rtsp://admin:ab123456@172.168.1.14/surfix";
+        path1 = "http://172.168.1.153:5008";
         path2 = "http://172.168.1.153:5008";
         path3 = "http://172.168.1.153:5008";
         path4 = "http://172.168.1.153:5008";
         path5 = "http://172.168.1.153:5008";
         path6 = "http://172.168.1.153:5008";
-        path7 = "http://172.168.1.153:5008";
-        path8 = "http://172.168.1.153:5008";
-        path9 = "http://172.168.1.153:5008";
 
         VideoView video1 = (VideoView) findViewById(R.id.video1);
         VideoView video2 = (VideoView) findViewById(R.id.video2);
@@ -89,20 +82,13 @@ public class ShineDemo9Activity extends Activity {
         VideoView video4 = (VideoView) findViewById(R.id.video4);
         VideoView video5 = (VideoView) findViewById(R.id.video5);
         VideoView video6 = (VideoView) findViewById(R.id.video6);
-        VideoView video7 = (VideoView) findViewById(R.id.video7);
-        VideoView video8 = (VideoView) findViewById(R.id.video8);
-        VideoView video9 = (VideoView) findViewById(R.id.video9);
 
         showVideo(path1, video1);
-//        showVideo(path2, video2);
-//        showVideo(path3, video3);
-//        showVideo(path4, video4);
-//        showVideo(path5, video5);
-//        showVideo(path6, video6);
-//       showVideo(path7, video7);
-        //showVideo(path8, video8);
-        //showVideo(path9, video9);
-
+        showVideo(path2, video2);
+        showVideo(path3, video3);
+        showVideo(path4, video4);
+        showVideo(path5, video5);
+        showVideo(path6, video6);
     }
 
 
@@ -114,7 +100,7 @@ public class ShineDemo9Activity extends Activity {
         } else {
             mMedia = new Media(libVLC, path);
         }
-        mMedia.setHWDecoderEnabled(false, false);
+        mMedia.setHWDecoderEnabled(true, true);
         final MediaPlayer mMediaPlayer = new MediaPlayer(mMedia);
         IVLCVout vlcVout2 = mMediaPlayer.getVLCVout();
         vlcVout2.setVideoView(videoView);
@@ -122,9 +108,9 @@ public class ShineDemo9Activity extends Activity {
         int w_screen = dm.widthPixels;
         int h_screen = dm.heightPixels;
         float rate = ((float) 1920 / (float) 1080);
-        float heitrue = ((float) w_screen / (float) 3) / rate;
+        float heitrue = ((float) w_screen / (float) 2) / rate;
         if (h_screen > heitrue) {
-            vlcVout2.setWindowSize(w_screen / 3, (int) heitrue);
+            vlcVout2.setWindowSize(w_screen / 2, (int) heitrue);
         } else {
             float wtrue = ((float) h_screen / (float) 3) * rate;
             vlcVout2.setWindowSize((int) wtrue, h_screen / 3);
@@ -140,21 +126,20 @@ public class ShineDemo9Activity extends Activity {
                     case Event.EndReached:
                         mMediaPlayer.stop();
                         Media mMedia;
-                        if (path.contains("http")) {
-                            Log.d("pathpath", path + "");
-                            mMedia = new Media(libVLC, Uri.parse(path));
-                        } else if (path.contains("rtsp")) {
+                        if (path.startsWith("http")) {
                             mMedia = new Media(libVLC, Uri.parse(path));
                         } else {
                             mMedia = new Media(libVLC, path);
                         }
-                        mMedia.setHWDecoderEnabled(false, false);
+                        mMedia.setHWDecoderEnabled(true, true);
                         mMediaPlayer.setMedia(mMedia);
                         mMedia.release();
                         mMediaPlayer.play();
                         break;
                 }
+
             }
         });
     }
+
 }

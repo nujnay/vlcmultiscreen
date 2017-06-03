@@ -21,7 +21,7 @@
             android:name="com.shine.vlcmultiscreen.libvlcandroidsample.VideoActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="reverseLandscape" />
-        <activity android:name="com.shine.vlcmultiscreen.libvlcandroidsample.ShineDemo4Activity">
+        <activity android:name="com.shine.vlcmultiscreen.libvlcandroidsample.ShineDemo9Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

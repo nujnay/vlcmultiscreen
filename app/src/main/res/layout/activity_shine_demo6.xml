@@ -20,6 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
+        <VideoView
+            android:id="@+id/video5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -34,15 +40,14 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <!--<ImageView-->
-        <!--android:id="@+id/video3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:src="@mipmap/ic_launcher"-->
-        <!--android:layout_weight="1" />-->
-
         <VideoView
             android:id="@+id/video4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <VideoView
+            android:id="@+id/video6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />

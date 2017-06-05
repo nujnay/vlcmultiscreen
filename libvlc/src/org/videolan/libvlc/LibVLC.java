@@ -77,6 +77,10 @@ public class LibVLC extends VLCObject<LibVLC.Event> {
             }
         }
 
+        options.add("--avcodec-skip-frame");
+        options.add("2");
+        options.add("--avcodec-skip-idct");
+        options.add("2");
         /* XXX: HACK to remove when we drop 2.3 support: force android_display vout */
         if (!AndroidUtil.isHoneycombOrLater) {
             boolean setVout = true;

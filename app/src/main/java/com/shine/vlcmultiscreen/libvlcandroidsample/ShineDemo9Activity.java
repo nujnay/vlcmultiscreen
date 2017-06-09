@@ -73,10 +73,10 @@ public class ShineDemo9Activity extends Activity {
         String path8 = "";
         String path9 = "";
 
-        path1 = "rtsp://admin:ab123456@172.168.1.14/surfix";
-        path2 = "http://172.168.1.153:5008";
-        path3 = "http://172.168.1.153:5008";
-        path4 = "http://172.168.1.153:5008";
+        path1 = "rtsp://admin:NVOXBP@172.168.1.100";
+        path2 = "rtsp://admin:KYNLHS@172.168.1.103";
+        path3 = "rtsp://admin:EQRSQK@172.168.1.101";
+        path4 = "rtsp://admin:NVOXBP@172.168.1.100";
         path5 = "http://172.168.1.153:5008";
         path6 = "http://172.168.1.153:5008";
         path7 = "http://172.168.1.153:5008";
@@ -94,8 +94,8 @@ public class ShineDemo9Activity extends Activity {
         VideoView video9 = (VideoView) findViewById(R.id.video9);
 
         showVideo(path1, video1);
-//        showVideo(path2, video2);
-//        showVideo(path3, video3);
+        showVideo(path2, video2);
+        showVideo(path3, video3);
 //        showVideo(path4, video4);
 //        showVideo(path5, video5);
 //        showVideo(path6, video6);
@@ -114,7 +114,7 @@ public class ShineDemo9Activity extends Activity {
         } else {
             mMedia = new Media(libVLC, path);
         }
-        mMedia.setHWDecoderEnabled(false, false);
+        mMedia.setHWDecoderEnabled(true, true);
         final MediaPlayer mMediaPlayer = new MediaPlayer(mMedia);
         IVLCVout vlcVout2 = mMediaPlayer.getVLCVout();
         vlcVout2.setVideoView(videoView);
@@ -148,7 +148,7 @@ public class ShineDemo9Activity extends Activity {
                         } else {
                             mMedia = new Media(libVLC, path);
                         }
-                        mMedia.setHWDecoderEnabled(false, false);
+                        mMedia.setHWDecoderEnabled(true, true);
                         mMediaPlayer.setMedia(mMedia);
                         mMedia.release();
                         mMediaPlayer.play();
